@@ -1,4 +1,5 @@
-<img src="https://github.com/user-attachments/assets/afe65c66-8c83-4b0b-bcfc-cca8ed4b9458" alt="ToastKit Logo Design" width="250" />
+
+![ToastKit Logo Design-2](https://github.com/user-attachments/assets/5935dd17-029d-488b-b7e3-2e767cc2b9e1)
 
 # ToastKit
 ToastKit is a lightweight and fully customizable Swift package that helps you display informative toast messages in your app. It’s easy to use, supports 

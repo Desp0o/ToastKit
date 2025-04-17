@@ -30,7 +30,7 @@ You can quickly use ready-made toasts or create your own custom toast view with 
 ---------
 
 ### Success / Warning / Error/ Info - Toasts
-<img src="https://github.com/user-attachments/assets/e0881ee3-4baf-4c6e-9a50-a410957e0a20" alt="success" />
+![simples](https://github.com/user-attachments/assets/f3af5442-fd4b-4ab3-a01d-9bf95d374656)
 
 ##### simple toast
 ```swift
@@ -67,6 +67,8 @@ VStack {
 
 ---------
 ### Bottom - Toasts
+![bottom](https://github.com/user-attachments/assets/c9f086f6-13d4-42be-a008-ab1c81937674)
+
 ##### simple toast
 ```swift
  VStack {
@@ -104,6 +106,7 @@ VStack {
 
 
 ### Edge Slide Toast - Toasts
+![slide](https://github.com/user-attachments/assets/4fd902f8-3afe-4b36-8e20-0dfd0a7d4639)
 
 ##### simple toast
 ```swift
@@ -143,6 +146,7 @@ VStack {
 ----------------
 
 ### Toast with SF Symbol
+![sf](https://github.com/user-attachments/assets/9c45e226-4193-4252-beb7-7c09b782ce08)
 
 ##### simple toast
 ```swift
@@ -194,6 +198,7 @@ VStack {
 -----------
 
 ### Toast with custom icon or image
+![custom](https://github.com/user-attachments/assets/cfb46343-79c0-48f8-847b-c292530fb580)
 
 ##### simple toast
 ```swift

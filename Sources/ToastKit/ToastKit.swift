@@ -32,6 +32,7 @@ public struct CustomToast: View {
   let innerVpadding: CGFloat
   let outterHpadding: CGFloat
   let stackAligment: Alignment
+  let isStackMaxHeight: Bool
   
   let cornerRadius: CGFloat
   
@@ -83,6 +84,7 @@ public struct CustomToast: View {
     innerVpadding: CGFloat = 10,
     outterHpadding: CGFloat = 20,
     stackAligment: Alignment = .top,
+    isStackMaxHeight: Bool = true,
     
     cornerRadius: CGFloat = 12,
     
@@ -132,6 +134,7 @@ public struct CustomToast: View {
     self.innerVpadding = innerVpadding
     self.outterHpadding = outterHpadding
     self.stackAligment = stackAligment
+    self.isStackMaxHeight = isStackMaxHeight
     
     self.cornerRadius = cornerRadius
     
@@ -232,7 +235,8 @@ public struct CustomToast: View {
         .padding(.horizontal, outterHpadding)
       }
     }
-    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: stackAligment)
+    .frame(maxWidth: .infinity, alignment: stackAligment)
+    .if(isStackMaxHeight) { $0.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: stackAligment)}
     .onChange(of: isVisible) { _, newValue in
       if newValue {
         if autoDisappear {
@@ -261,5 +265,3 @@ public struct CustomToast: View {
     }
   }
 }
-
-

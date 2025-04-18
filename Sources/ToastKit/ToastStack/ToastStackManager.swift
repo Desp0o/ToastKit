@@ -9,7 +9,7 @@ import SwiftUI
 @available(macOS 14.0, *)
 @available(iOS 17, *)
 public struct ToastItemModel: Identifiable, Equatable {
-  let id = UUID()
+  public let id = UUID()
   let title: String
   let toastColor: ToastColorTypes
   let autoDisappearDuration: TimeInterval

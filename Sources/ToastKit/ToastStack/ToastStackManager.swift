@@ -27,6 +27,8 @@ public struct ToastItemModel: Identifiable, Equatable {
 public class ToastStackManager: ObservableObject {
   @Published var toasts: [ToastItemModel] = []
   
+  public init() { }
+  
   func show(title: String, toastColor: ToastColorTypes, autoDisappearDuration: TimeInterval = 2.0) {
     let toast = ToastItemModel(
       title: title,

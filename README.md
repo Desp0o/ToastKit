@@ -252,7 +252,78 @@ VStack {
 
 ------------
 
-## ⚠️ Alternatively, you can use .toast to build a fully customizable toast by providing the following parameters ⚠️
+## 🍞 Toast Stack
+![simplestack](https://github.com/user-attachments/assets/565c010b-55b6-4976-982e-0800e153f6f9)
+![customstack](https://github.com/user-attachments/assets/4fafbb4c-9138-4239-9ced-2a3fa2005da1)
+
+### With ToastStackManager, you can show toasts at the same time! 
+
+#### Certainly, you can utilize toast stacks from your view model. Here’s an example: 
+```swift
+// in your ViewModel
+
+import ToastKit
+import Combine
+
+final class ViewModel: ObservableObject {
+  let toastManager: ToastStackManager
+  
+  init(toastManager: ToastStackManager = ToastStackManager()) {
+    self.toastManager = toastManager
+  }
+  
+  @MainActor func foo() {
+    // Your logic
+    toastManager.show(title: "foo success toast", toastColor: .success, autoDisappearDuration: 3.0)
+    
+    // Your logic
+    toastManager.show(title: "foo info toast", toastColor: .info)
+  }
+}
+```
+
+#### in your view
+
+```swift
+import ToastKit
+import SwiftUI
+
+struct ProfileView: View {
+  @StateObject private var vm: ViewModel
+  
+  init(vm: ViewModel = ViewModel()) {
+    _vm = StateObject(wrappedValue: vm)
+  }
+  
+  var body: some View {
+    ZStack {
+      // Your view
+      
+      ToastStackView(vm: vm.toastManager)
+      // Alternatively, you can utilize it with a custom transition.
+      ToastStackView(vm: vm.toastManager, transitionType: .move(edge: .trailing).combined(with: .opacity))
+    }
+  }
+}
+```
+
+##### ToastStackView Configuration ⚙️
+| Parameter          | Type                         | Default Value                  | Description |
+|-------------------|------------------------------|--------------------------------|-------------|
+| `title`            | String                     | -                              | The main message displayed in the toast. |
+| `toastColor`           | ToastColorTypes        | -                              | The color type or style of the toast. |
+| `autoDisappearDuration`| TimeInterval           | 2.0                            | Duration before toast disappears. |
+
+##### ToastStackManager Configuration ⚙️
+| Parameter          | Type                         | Default Value                  | Description |
+|-------------------|------------------------------|--------------------------------|-------------|
+| `vm`            | ToastStackManager               | -                              | The view model that manages |
+| `transitionType`| AnyTransition                   | -                              | Transition animation for appearing/disappearing. |
+
+-----------
+
+
+## ⚠️ Alternatively, you can utilize the `.toast` method to construct a fully customizable toast by specifying the following parameters:
 
 ##### Configuration ⚙️
 | Parameter          | Type                         | Default Value                  | Description |

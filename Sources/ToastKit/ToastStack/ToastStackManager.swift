@@ -29,7 +29,7 @@ public class ToastStackManager: ObservableObject {
   
   public init() { }
   
-  func show(title: String, toastColor: ToastColorTypes, autoDisappearDuration: TimeInterval = 2.0) {
+  public func show(title: String, toastColor: ToastColorTypes, autoDisappearDuration: TimeInterval = 2.0) {
     let toast = ToastItemModel(
       title: title,
       toastColor: toastColor,

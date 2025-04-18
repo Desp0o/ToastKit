@@ -8,14 +8,14 @@ import SwiftUI
 
 @available(macOS 14.0, *)
 @available(iOS 17, *)
-struct ToastItemModel: Identifiable, Equatable {
+public struct ToastItemModel: Identifiable, Equatable {
   let id = UUID()
   let title: String
   let toastColor: ToastColorTypes
   let autoDisappearDuration: TimeInterval
   let isStackMaxHeight: Bool = false
   
-  static func == (lhs: ToastItemModel, rhs: ToastItemModel) -> Bool {
+  public static func == (lhs: ToastItemModel, rhs: ToastItemModel) -> Bool {
     return lhs.id == rhs.id
   }
 }
@@ -24,7 +24,7 @@ struct ToastItemModel: Identifiable, Equatable {
 @available(iOS 17, *)
 
 @MainActor
-class ToastStackManager: ObservableObject {
+public class ToastStackManager: ObservableObject {
   @Published var toasts: [ToastItemModel] = []
   
   func show(title: String, toastColor: ToastColorTypes, autoDisappearDuration: TimeInterval = 2.0) {

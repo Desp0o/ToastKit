@@ -9,11 +9,11 @@ import SwiftUI
 
 @available(macOS 14.0, *)
 @available(iOS 17, *)
-struct ToastStackView: View {
+public struct ToastStackView: View {
   @StateObject var vm: ToastStackManager
   let transitionType: AnyTransition
   
-  init(
+  public init(
     vm: ToastStackManager,
     transitionType: AnyTransition = .move(edge: .top).combined(with: .opacity)
   ) {
@@ -21,7 +21,7 @@ struct ToastStackView: View {
     self.transitionType = transitionType
   }
   
-  var body: some View {
+  public var body: some View {
     VStack {
       ForEach(vm.toasts, id: \.id) { toast in
         ZStack {

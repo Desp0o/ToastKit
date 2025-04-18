@@ -8,28 +8,13 @@ import SwiftUI
 
 @available(macOS 14.0, *)
 @available(iOS 17, *)
-public struct ToastItemModel: Identifiable, Equatable {
-  public let id = UUID()
-  let title: String
-  let toastColor: ToastColorTypes
-  let autoDisappearDuration: TimeInterval
-  let isStackMaxHeight: Bool = false
-  
-  public static func == (lhs: ToastItemModel, rhs: ToastItemModel) -> Bool {
-    return lhs.id == rhs.id
-  }
-}
 
-@available(macOS 14.0, *)
-@available(iOS 17, *)
-
-@MainActor
 public class ToastStackManager: ObservableObject {
   @Published var toasts: [ToastItemModel] = []
   
   public init() { }
   
-  public func show(title: String, toastColor: ToastColorTypes, autoDisappearDuration: TimeInterval = 2.0) {
+  @MainActor public func show(title: String, toastColor: ToastColorTypes, autoDisappearDuration: TimeInterval = 2.0) {
     let toast = ToastItemModel(
       title: title,
       toastColor: toastColor,
@@ -38,12 +23,13 @@ public class ToastStackManager: ObservableObject {
     
     toasts.insert(toast, at: 0)
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + autoDisappearDuration) { [weak self] in
-      self?.removeToast(toast)
+    Task {
+      try await Task.sleep(nanoseconds: UInt64(autoDisappearDuration * 1_000_000_000))
+      self.removeToast(toast)
     }
   }
   
-  private func removeToast(_ toast: ToastItemModel) {
+  func removeToast(_ toast: ToastItemModel) {
     toasts.removeAll { $0.id == toast.id }
   }
 }

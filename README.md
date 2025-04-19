@@ -8,7 +8,7 @@ various built-in toast styles like success, warning, info, error, with icons....
 You can quickly use ready-made toasts or create your own custom toast view with complete control over layout, colors, animations, icons, and more.
 
 
-![Static Badge](https://img.shields.io/badge/Swit-6.1-orange) ![Static Badge](https://img.shields.io/badge/iOS-17.0%2B-white) ![Static Badge](https://img.shields.io/badge/Version%20-%201.3.0-skyblue) ![Static Badge](https://img.shields.io/badge/LICENSE-MIT-yellow) ![Static Badge](https://img.shields.io/badge/SPM-SUCCESS-green)
+![Static Badge](https://img.shields.io/badge/Swit-6.0-orange) ![Static Badge](https://img.shields.io/badge/iOS-17.0%2B-white) ![Static Badge](https://img.shields.io/badge/Version%20-%201.3.0-skyblue) ![Static Badge](https://img.shields.io/badge/LICENSE-MIT-yellow) ![Static Badge](https://img.shields.io/badge/SPM-SUCCESS-green)
 
 
 

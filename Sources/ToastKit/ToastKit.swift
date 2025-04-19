@@ -6,6 +6,7 @@ import SwiftUI
 @available(macOS 14.0, *)
 @available(iOS 17, *)
 public struct CustomToast: View {
+  @State private var disappearTask: Task<(), Never>?
   @Binding var isVisible: Bool
   let title: String
   let toastColor: ToastColorTypes
@@ -239,12 +240,18 @@ public struct CustomToast: View {
     .if(isStackMaxHeight) { $0.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: stackAligment)}
     .onChange(of: isVisible) { _, newValue in
       if newValue {
+        disappearTask?.cancel()
         if autoDisappear {
-          Task {
+          disappearTask = Task {
             try? await Task.sleep(nanoseconds: UInt64(autoDisappearDuration * 1_000_000_000))
-            isVisible = false
+            if !Task.isCancelled {
+              isVisible = false
+            }
           }
         }
+      } else {
+        disappearTask?.cancel()
+        disappearTask = nil
       }
     }
     .animation(animation, value: isVisible)

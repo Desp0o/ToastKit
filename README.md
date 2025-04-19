@@ -8,7 +8,7 @@ various built-in toast styles like success, warning, info, error, with icons....
 You can quickly use ready-made toasts or create your own custom toast view with complete control over layout, colors, animations, icons, and more.
 
 
-![Static Badge](https://img.shields.io/badge/Swit-6.1-orange) ![Static Badge](https://img.shields.io/badge/iOS-17.0%2B-white) ![Static Badge](https://img.shields.io/badge/Version%20-%201.2.0-skyblue) ![Static Badge](https://img.shields.io/badge/LICENSE-MIT-yellow) ![Static Badge](https://img.shields.io/badge/SPM-SUCCESS-green)
+![Static Badge](https://img.shields.io/badge/Swit-6.1-orange) ![Static Badge](https://img.shields.io/badge/iOS-17.0%2B-white) ![Static Badge](https://img.shields.io/badge/Version%20-%201.3.0-skyblue) ![Static Badge](https://img.shields.io/badge/LICENSE-MIT-yellow) ![Static Badge](https://img.shields.io/badge/SPM-SUCCESS-green)
 
 
 
@@ -349,6 +349,7 @@ struct ProfileView: View {
 | `innerVpadding`        | CGFloat                     | `10`                             | Inner vertical padding. |
 | `outterHpadding`       | CGFloat                     | `20`                             | Outer horizontal padding. |
 | `stackAligment`        | Alignment                   | `.top`                           | Stack alignment inside the toast. |
+| `isStackMaxHeight`     | Bool                        | `true`                           | occupies the maximum available height | 
 | `cornerRadius`         | CGFloat                     | `12`                             | Corner radius of the toast. |
 | `shadowColor`          | Color                       | `.black.opacity(0.2)`            | Shadow color. |
 | `shadowRadius`         | CGFloat                     | `10`                             | Radius of the toast's shadow. |

@@ -61,7 +61,9 @@ public extension View {
     layoutDirection: LayoutDirection = .leftToRight,
     closeSFicon: String = "x.circle",
     closeSFiconSize: CGFloat = 18,
-    closeSFiconColor: Color = .white
+    closeSFiconColor: Color = .white,
+    isGlass: Bool = false,
+    glassColor: Color = .clear
   ) -> some View {
     modifier(
       ToastModifier(
@@ -104,7 +106,9 @@ public extension View {
           layoutDirection: layoutDirection,
           closeSFicon: closeSFicon,
           closeSFiconSize: closeSFiconSize,
-          closeSFiconColor: closeSFiconColor
+          closeSFiconColor: closeSFiconColor,
+          isGlass: isGlass,
+          glassColor: glassColor
         )
       )
     )
@@ -270,8 +274,7 @@ public extension View {
     animation: Animation = .snappy,
     vDirection: VerticalDirection = .top,
     titleFontColor: Color = .white,
-    maxWidth: Bool = false,
-    layoutDirection: LayoutDirection = .leftToRight
+    maxWidth: Bool = false
   ) -> some View {
     toast(
       isVisible: isVisible,
@@ -286,7 +289,6 @@ public extension View {
       iconName: iconName,
       iconSize: iconSize,
       iconColor: iconColor,
-      layoutDirection: layoutDirection
     )
   }
 }
@@ -323,6 +325,45 @@ public extension View {
       sfSymbolSize: sfSymbolSize,
       sfSymbolColor: sfSymbolColor,
       layoutDirection: layoutDirection
+    )
+  }
+}
+
+
+@available(macOS 26.0, *)
+@available(iOS 26, *)
+public extension View {
+  func glassToast(
+    isVisible: Binding<Bool>,
+    title: String,
+    subtitle: String = "",
+    glassColor: Color = .clear,
+    titleFontColor: Color = .white,
+    subtitleFontColor: Color = .white,
+    maxWidth: Bool = false,
+    transitionType: ToastTransitionType = .move(edge: .top),
+    animation: Animation = .snappy,
+    vDirection: VerticalDirection = .top,
+    layoutDirection: LayoutDirection = .leftToRight
+  ) -> some View {
+    modifier(
+      ToastModifier(
+        isVisible: isVisible,
+        toast: CustomToast(
+          isVisible: isVisible,
+          title: title,
+          toastColor: .glass,
+          transitionType: transitionType,
+          animation: animation,
+          maxWidth: maxWidth,
+          subtitle: subtitle,
+          titleFontColor: titleFontColor,
+          subtitleFontColor: subtitleFontColor,
+          stackAligment: vDirection.value,
+          layoutDirection: layoutDirection, isGlass: true,
+          glassColor: glassColor
+        )
+      )
     )
   }
 }

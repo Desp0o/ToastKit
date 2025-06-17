@@ -58,6 +58,9 @@ public struct CustomToast: View {
   let closeSFiconSize: CGFloat
   let closeSFiconColor: Color
   
+  let isGlass: Bool
+  let glassColor: Color
+  
   init(
     isVisible: Binding<Bool>,
     title: String,
@@ -72,7 +75,7 @@ public struct CustomToast: View {
     
     font: String = "SFProDisplay",
     titleFontSize: CGFloat = 16,
-    titleFontWeight: Font.Weight = .semibold,
+    titleFontWeight: Font.Weight = .regular,
     titleFontColor: Color = .white,
     
     subtitleFontSize: CGFloat = 14,
@@ -108,7 +111,10 @@ public struct CustomToast: View {
     
     closeSFicon: String = "x.circle",
     closeSFiconSize: CGFloat = 18,
-    closeSFiconColor: Color = .white
+    closeSFiconColor: Color = .white,
+    
+    isGlass: Bool = false,
+    glassColor: Color = .clear
   ) {
     _isVisible = isVisible
     self.title = title
@@ -159,6 +165,9 @@ public struct CustomToast: View {
     self.closeSFicon = closeSFicon
     self.closeSFiconSize = closeSFiconSize
     self.closeSFiconColor = closeSFiconColor
+    
+    self.isGlass = isGlass
+    self.glassColor = glassColor
   }
   
   public var body: some View {
@@ -169,6 +178,7 @@ public struct CustomToast: View {
             VStack {
               Text(title)
                 .font(.custom(font, size: titleFontSize))
+                .font(.system(size: titleFontSize))
                 .fontWeight(titleFontWeight)
                 .foregroundStyle(titleFontColor)
                 .multilineTextAlignment(multilineTextAlignment)
@@ -234,6 +244,11 @@ public struct CustomToast: View {
           }
         }
         .padding(.horizontal, outterHpadding)
+        .background {
+          if #available(iOS 26.0, *), #available(macOS 26.0, *), isGlass {
+            Color.clear.glassEffect(.regular.tint(glassColor))
+          }
+        }
       }
     }
     .frame(maxWidth: .infinity, alignment: stackAligment)

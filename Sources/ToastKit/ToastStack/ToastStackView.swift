@@ -12,25 +12,42 @@ import SwiftUI
 public struct ToastStackView: View {
   @StateObject var vm: ToastStackManager
   let transitionType: AnyTransition
+  let isGlass: Bool
+  let glassColor: Color
   
   public init(
     vm: ToastStackManager,
-    transitionType: AnyTransition = .move(edge: .top).combined(with: .opacity)
+    transitionType: AnyTransition = .move(edge: .top).combined(with: .opacity),
+    isGlass: Bool = false,
+    glassColor: Color = .clear
   ) {
     _vm = StateObject(wrappedValue: vm)
     self.transitionType = transitionType
+    self.isGlass = isGlass
+    self.glassColor = glassColor
   }
   
   public var body: some View {
     VStack {
       ForEach(vm.toasts, id: \.id) { toast in
         ZStack {
-          CustomToast(
-            isVisible: .constant(true),
-            title: toast.title,
-            toastColor: toast.toastColor,
-            isStackMaxHeight: toast.isStackMaxHeight
-          )
+          if #available(iOS 26.0, *), isGlass {
+            CustomToast(
+              isVisible: .constant(true),
+              title: toast.title,
+              toastColor: toast.toastColor,
+              isStackMaxHeight: toast.isStackMaxHeight,
+              isGlass: isGlass,
+              glassColor: glassColor
+            )
+          } else {
+            CustomToast(
+              isVisible: .constant(true),
+              title: toast.title,
+              toastColor: toast.toastColor,
+              isStackMaxHeight: toast.isStackMaxHeight
+            )
+          }
         }
         .transition(transitionType)
       }

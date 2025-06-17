@@ -8,12 +8,13 @@ various built-in toast styles like success, warning, info, error, with icons....
 You can quickly use ready-made toasts or create your own custom toast view with complete control over layout, colors, animations, icons, and more.
 
 
-![Static Badge](https://img.shields.io/badge/Swit-6.0-orange) ![Static Badge](https://img.shields.io/badge/iOS-17.0%2B-white) ![Static Badge](https://img.shields.io/badge/Version%20-%201.3.0-skyblue) ![Static Badge](https://img.shields.io/badge/LICENSE-MIT-yellow) ![Static Badge](https://img.shields.io/badge/SPM-SUCCESS-green)
+![Static Badge](https://img.shields.io/badge/Swit-6.0-orange) ![Static Badge](https://img.shields.io/badge/iOS-17.0%2B-white) ![Static Badge](https://img.shields.io/badge/Version%20-%2026.0.0-skyblue) ![Static Badge](https://img.shields.io/badge/LICENSE-MIT-yellow) ![Static Badge](https://img.shields.io/badge/SPM-SUCCESS-green)
 
 
 
 ## Features 🚀
 - Full Customization
+- Glass Effect
 - Max Width Support 
 - Custom Icons & SF Symbols 
 - Auto Dismiss 
@@ -29,13 +30,52 @@ You can quickly use ready-made toasts or create your own custom toast view with 
 - Responsive Design 
 
 ---------
+### GlassEffect
+
+![glassGif](https://github.com/user-attachments/assets/09430eb5-fed7-4864-b865-ac3fa7b1e56b)
+
+```swift
+    VStack {
+      
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    //simple usage
+    .glassToast(isVisible: $isVisible, title: title)
+    
+    //with full parameters
+    .glassToast(
+      isVisible: $isVisible2,
+      title: title,
+      subtitle: "if you have iOS 26 you can use this toast",
+      glassColor: .red.opacity(0.5),
+      titleFontColor: .black,
+      subtitleFontColor: .black,
+      maxWidth: false,
+      transitionType: .custom(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)).combined(with: .opacity)),
+      animation: .smooth,
+      vDirection: .bottom
+    )
+```
+
+##### Configuration ⚙️
+| Parameter          | Type                         | Default Value                  | Description |
+|-------------------|------------------------------|--------------------------------|-------------|
+| `isVisible`        | Binding<Bool>             | —                              | Binding to control visibility. |
+| `title`            | String                     | —                              | The main message displayed in the toast. |
+| `subtitle`             | String                      | `""`                             | Subtitle text for additional info. |
+| `titleFontColor`       | Color                       | `.white`                         | Font color of the title. |
+| `subtitleFontColor`    | Color                       | `.white`                         | Font color of the subtitle. |
+| `transitionType`   | ToastTransitionType         | .move(edge: .top)            | The transition animation for how the toast appears/disappears. |
+| `animation`        | Animation                | .snappy                     | Animation used to present and dismiss the toast. |
+| `vDirection`       | VerticalDirection           | .top                        | Vertical position of the toast (`.top` or `.bottom`). |
+| `maxWidth`         | Bool                       | false                      | If `true`, toast takes maximum available width. |
 
 ### Success / Warning / Error/ Info - Toasts
 ![simples](https://github.com/user-attachments/assets/f3af5442-fd4b-4ab3-a01d-9bf95d374656)
 
 ##### simple toast
 ```swift
- VStack {
+    VStack {
       
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -47,7 +87,7 @@ You can quickly use ready-made toasts or create your own custom toast view with 
 
 ##### with full parameters
 ```swift
-VStack {
+    VStack {
       
     }
     .successToast(isVisible: $isVisible, title: "success full width", toastColor: .success, animation: .snappy, titleFontColor: .white, maxWidth: false)

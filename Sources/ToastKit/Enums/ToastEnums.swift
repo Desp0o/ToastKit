@@ -25,6 +25,7 @@ public enum ToastColorTypes {
   case error
   case info
   case custom(Color)
+  case glass
   
   var value: Color {
     switch self {
@@ -36,6 +37,8 @@ public enum ToastColorTypes {
       return .red
     case .info:
       return .blue
+    case .glass:
+      return .clear
     case .custom(let color):
       return color
     }

@@ -4,7 +4,7 @@
 import SwiftUI
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public struct CustomToast: View {
   @State private var disappearTask: Task<(), Never>?
   @Binding var isVisible: Bool
@@ -253,7 +253,7 @@ public struct CustomToast: View {
     }
     .frame(maxWidth: .infinity, alignment: stackAligment)
     .if(isStackMaxHeight) { $0.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: stackAligment)}
-    .onChange(of: isVisible) { _, newValue in
+    .onChange(of: isVisible) { newValue in
       if newValue {
         disappearTask?.cancel()
         if autoDisappear {

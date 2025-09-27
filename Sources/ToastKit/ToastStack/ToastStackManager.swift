@@ -7,7 +7,7 @@
 import SwiftUI
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 
 public class ToastStackManager: ObservableObject {
   @Published var toasts: [ToastItemModel] = []

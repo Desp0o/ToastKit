@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(macOS 14.0, *)
-@available(iOS 17.0, *)
+@available(iOS 16.0, *)
 
 public extension View {
   @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
@@ -21,7 +21,7 @@ public extension View {
 }
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public extension View {
   func toast(
     isVisible: Binding<Bool>,
@@ -117,7 +117,7 @@ public extension View {
 
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public extension View {
   func successToast(
     isVisible: Binding<Bool>,
@@ -140,7 +140,7 @@ public extension View {
 
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public extension View {
   func warningToast(
     isVisible: Binding<Bool>,
@@ -163,7 +163,7 @@ public extension View {
 
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public extension View {
   func errorToast(
     isVisible: Binding<Bool>,
@@ -186,7 +186,7 @@ public extension View {
 
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public extension View {
   func bottomToast(
     isVisible: Binding<Bool>,
@@ -211,7 +211,7 @@ public extension View {
 
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public extension View {
   func edgeSlideToast(
     isVisible: Binding<Bool>,
@@ -238,7 +238,7 @@ public extension View {
 
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public extension View {
   func infoToast(
     isVisible: Binding<Bool>,
@@ -261,7 +261,7 @@ public extension View {
 
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public extension View {
   func toastWithIcon(
     isVisible: Binding<Bool>,
@@ -295,7 +295,7 @@ public extension View {
 
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public extension View {
   func toastWithSFSymbol(
     isVisible: Binding<Bool>,

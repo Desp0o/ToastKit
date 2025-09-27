@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public enum ToastTransitionType {
   case fade
   case scale
@@ -18,7 +18,7 @@ public enum ToastTransitionType {
 }
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public enum ToastColorTypes {
   case success
   case warning
@@ -46,7 +46,7 @@ public enum ToastColorTypes {
 }
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public enum HorizontalDirection {
   case leading
   case trailing
@@ -62,7 +62,7 @@ public enum HorizontalDirection {
 }
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public enum VerticalDirection {
   case top
   case bottom

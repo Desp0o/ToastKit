@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(macOS 14.0, *)
-@available(iOS 17, *)
+@available(iOS 16, *)
 public struct ToastItemModel: Identifiable, Equatable {
   public let id = UUID()
   let title: String

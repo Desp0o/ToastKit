@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(macOS 14.0, *)
-@available(iOS 17.0, *)
+@available(iOS 16.0, *)
 public struct ToastModifier: ViewModifier {
   @Binding var isVisible: Bool
   let toast: CustomToast
